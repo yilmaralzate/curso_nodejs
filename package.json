@@ -1,0 +1,22 @@
+{
+  "name": "nodejs_apps",
+  "version": "1.0.0",
+  "description": "Aprendizaje",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yilmaralzate/curso_nodejs.git"
+  },
+  "author": "Yilmar Alzate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yilmaralzate/curso_nodejs/issues"
+  },
+  "homepage": "https://github.com/yilmaralzate/curso_nodejs#readme",
+  "dependencies": {
+    "yargs": "^12.0.2"
+  }
+}
