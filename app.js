@@ -1,26 +1,43 @@
 /**
- * Importar funciones y usarlas para creacion de archivos
+ * uso de yargs para recibir parametros por consola
  */
 
-const BASE = 2;
+const { crearTabla, listarTabla } = require('./multiplicar/multiplicar');
+const { argv } = require('./config/yargs');
+const colors = require('colors');
+//otra forma de importar el objeto
+//const argv = require('./config/yargs').argv;
 
-//const MULTIPLIC = require('./multiplicar/multiplicar');
-//Se cambia por destructuracion de objeto o arreglo y se llama a la funcion
-//en lugar de crear un metodo
-const { crearTabla } = require('./multiplicar/multiplicar');
+//este muestra el argv del sistema sin yargs
+//let argv2 = process.argv;
 
+//el argv de yargs se definio como argv
+//console.log(argv.base);
+//console.log('Limite:',argv.limite);
 
-//MODULE es un objeto global disponible en toda la app
-//console.log(module);
+// console.log(argv2);
+// console.log(argv);
 
-//MULTIPLIC ahora tiene un acceso global
-//console.log(MULTIPLIC);
+let comando = argv._[0];
 
-//Llamado a la funcion
-/*
-crearTabla(BASE).then(respuesta => {
-    console.log(`Archivo creado: ${ respuesta }`);
-}).catch(err => {
-    console.log(err);
-})
-*/
+switch (comando) {
+    case 'listar':
+        listarTabla(argv.base, argv.limite).then(respuesta => {
+            console.log(respuesta);
+        }).catch(err => {
+            console.log(err);
+        })
+        break;
+
+    case 'crear':
+        crearTabla(argv.base, argv.limite).then(respuesta => {
+            console.log(`Archivo creado:`, `${ respuesta }`.green);
+        }).catch(err => {
+            console.log(err);
+        })
+        break;
+
+    default:
+        console.log('Comando desconocido...');
+        break;
+}
